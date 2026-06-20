@@ -4,6 +4,7 @@ import 'dotenv/config'
 import { urlencoded } from 'body-parser';
 import { connectDB } from './config/db.js';
 import dns from 'dns';
+import userRouter from './routes/userRoute.js';
 
 
 const app = express()
@@ -21,6 +22,7 @@ app.use(express.urlencoded({extended:true}))
 connectDB();
 
 //ROUTES
+app.use("/api/user",userRouter)
 app.get('/',(req,res)=>{
     res.send("API WORKING");
 })
